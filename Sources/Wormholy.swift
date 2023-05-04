@@ -127,7 +127,7 @@ public class Wormholy: NSObject
         return true
     }()
     
-    static func logError(function: String, error: String) {
+    public static func logError(function: String, error: String) {
         let model = RequestModel(functionName: function, errorDescription: error)
         Storage.shared.saveRequest(request: model)
     }
