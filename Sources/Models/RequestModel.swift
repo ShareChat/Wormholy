@@ -40,8 +40,8 @@ open class RequestModel: Codable {
         httpBody = nil
         code = 0
         responseHeaders = nil
-        dataResponse = nil
-        errorClientDescription = errorDescription
+        dataResponse = errorDescription.data(using: .utf8)
+        errorClientDescription = nil
         duration = 0
     }
     
