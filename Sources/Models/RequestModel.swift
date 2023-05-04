@@ -26,6 +26,25 @@ open class RequestModel: Codable {
     open var errorClientDescription: String?
     open var duration: Double?
     
+    init(functionName: String, errorDescription: String) {
+        id = UUID().uuidString
+        url = functionName
+        host = nil
+        port = nil
+        scheme = nil
+        date = Date()
+        method = "ERROR"
+        headers = [:]
+        credentials = [:]
+        cookies = nil
+        httpBody = nil
+        code = 0
+        responseHeaders = nil
+        dataResponse = nil
+        errorClientDescription = errorDescription
+        duration = 0
+    }
+    
     init(request: NSURLRequest, session: URLSession?) {
         id = UUID().uuidString
         url = request.url?.absoluteString ?? ""
@@ -92,7 +111,7 @@ open class RequestModel: Codable {
     
     
     var curlRequest: String {
-        var components = ["$ curl -v"]
+        var components = ["curl -v"]
 
         guard
             let _ = self.host
